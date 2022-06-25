@@ -3,6 +3,7 @@ package tech.adelemphii.randommobnames.utility;
 import com.github.javafaker.Faker;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import tech.adelemphii.randommobnames.RandomMobBios;
@@ -20,18 +21,14 @@ public class GeneralUtils {
     public static boolean hasData(Entity entity) {
         PersistentDataContainer pdc = entity.getPersistentDataContainer();
 
-        if(!pdc.has(randomMobBiosFact, PersistentDataType.STRING) || !pdc.has(randomMobBiosLOTR, PersistentDataType.STRING)
-            || !pdc.has(randomMobBiosMusic, PersistentDataType.STRING) || !pdc.has(randomMobBiosGame, PersistentDataType.STRING)) {
-            return false;
-        }
-
-        return true;
+        return pdc.has(randomMobBiosFact, PersistentDataType.STRING) && pdc.has(randomMobBiosLOTR, PersistentDataType.STRING)
+                && pdc.has(randomMobBiosMusic, PersistentDataType.STRING) && pdc.has(randomMobBiosGame, PersistentDataType.STRING);
     }
 
     public static void generateEntityData(Entity entity) {
         Faker faker = RandomMobBios.getInstance().getFaker();
 
-        if(entity.getCustomName() == null) {
+        if(entity.getCustomName() == null && !(entity instanceof Player)) {
             String firstName = faker.name().firstName();
             String lastName = faker.name().lastName();
 
