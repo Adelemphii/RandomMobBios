@@ -8,9 +8,6 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import tech.adelemphii.randommobnames.RandomMobBios;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class GeneralUtils {
 
     public static NamespacedKey randomMobBiosFact = new NamespacedKey(RandomMobBios.getInstance(), "random_mob_bios_fact");
