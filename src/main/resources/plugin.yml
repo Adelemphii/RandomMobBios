@@ -1,4 +1,4 @@
 name: RandomMobBios
 version: '${project.version}'
 main: tech.adelemphii.randommobnames.RandomMobBios
-api-version: 1.13
+api-version: 1.14
