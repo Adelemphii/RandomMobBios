@@ -3,6 +3,7 @@ package tech.adelemphii.randommobnames.events;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,10 @@ public class PlayerInteractEntityListener implements Listener {
 
     @EventHandler
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+        if(!(event.getRightClicked() instanceof Mob)) {
+            return;
+        }
+
         if(!event.getPlayer().isSneaking() || event.getHand() == EquipmentSlot.OFF_HAND) {
             return;
         }
